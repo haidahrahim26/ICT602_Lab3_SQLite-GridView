@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -82,7 +83,9 @@ public class MainActivity extends Activity {
     public static byte[] imageViewToByte(ImageView image) {
         Bitmap bitmap = ((BitmapDrawable) image.getDrawable()).getBitmap();
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        return stream.toByteArray();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] byteArray = stream.toByteArray();
+        return byteArray;
     }
 
     @Override

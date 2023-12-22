@@ -1,7 +1,7 @@
 package com.example.ict602cdcs2703b_lab3_gridview_haidah;
 
-public class Food
-{
+public class Food {
+
    private int id;
    private String name;
    private String price;
@@ -14,41 +14,28 @@ public class Food
       this.id = id;
    }
 
-   public int getId()
-   {
-      return id;
-   }
+   public int getId() {
+      return id;    }
 
-   public void setId(int id)
-   {
-      this.id = id;
-   }
-   public String getName()
-   {
-      return name;
-   }
+   public void setId(int id) {
+      this.id = id;    }
 
-   public void setName(String name)
-   {
-      this.name = name;
-   }
+   public String getName() {
+      return name;    }
 
-   public String getPrice()
-   {
-      return price;
-   }
-   public void setPrice(String price)
-   {
-      this.price = price;
-   }
-   public byte[] getImage()
-   {
-      return image;
-   }
-   public void setImage(byte[] image)
-   {
-      this.image = image;
-   }
+   public void setName(String name) {
+      this.name = name;    }
+
+   public String getPrice() {
+      return price;    }
+
+   public void setPrice(String price) {
+      this.price = price;    }
+
+   public byte[] getImage() {
+      return image;    }
+
+   public void setImage(byte[] image) {
+      this.image = image;    }
+
 }
-
-

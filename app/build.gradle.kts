@@ -8,8 +8,8 @@ android {
 
     defaultConfig {
         applicationId = "com.example.ict602cdcs2703b_lab3_gridview_haidah"
-        minSdk = 24
-        targetSdk = 32
+        minSdk = 30
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 

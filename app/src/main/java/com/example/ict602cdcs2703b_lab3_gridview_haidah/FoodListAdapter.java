@@ -3,6 +3,7 @@ package com.example.ict602cdcs2703b_lab3_gridview_haidah;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,65 +15,53 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class FoodListAdapter extends BaseAdapter {
-
-   private Context context;
-   private int layout;
-   private ArrayList<Food> foodsList;
-
-   public FoodListAdapter(Context context, int layout, ArrayList<Food> foodsList) {
-      this.context = context;
-      this.layout = layout;
-      this.foodsList = foodsList;
-   }
+public class FoodListAdapter extends BaseAdapter{
 
    @Override
-   public int getCount() {
-      return foodsList.size();
-   }
-
-   @Override
-   public Object getItem(int position) {
-      return foodsList.get(position);
-   }
-
-   @Override
-   public long getItemId(int position) {
-      return position;
-   }
-
-   @Override
-   public View getView(int position, View convertView, ViewGroup viewGroup) {
-      ViewHolder holder;
-
-      if (convertView == null) {
+   public View getView(int position, View view, ViewGroup viewGroup) {
+      View row = view;
+      ViewHolder holder = new ViewHolder();
+      if(row == null){
          LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-         convertView = inflater.inflate(layout, null);
-
-         holder = new ViewHolder();
-         holder.txtName = convertView.findViewById(R.id.txtName);
-         holder.txtPrice = convertView.findViewById(R.id.txtPrice);
-         holder.imageView = convertView.findViewById(R.id.imgFood);
-
-         convertView.setTag(holder);
-      } else {
-         holder = (ViewHolder) convertView.getTag();
+         row = inflater.inflate(layout, null);
+         holder.txtName = (TextView) row.findViewById(R.id.txtName);
+         holder.txtPrice = (TextView) row.findViewById(R.id.txtPrice);
+         holder.imageView = (ImageView) row.findViewById(R.id.imgFood);
+         row.setTag(holder);    }
+      else {
+         holder = (ViewHolder) row.getTag();
       }
 
       Food food = foodsList.get(position);
       holder.txtName.setText(food.getName());
       holder.txtPrice.setText(food.getPrice());
-
-      // Decode byte array to Bitmap and set it to ImageView
       byte[] foodImage = food.getImage();
       Bitmap bitmap = BitmapFactory.decodeByteArray(foodImage, 0, foodImage.length);
       holder.imageView.setImageBitmap(bitmap);
-
-      return convertView;
+      return row;
    }
 
-   private static class ViewHolder {
+   private Context context;
+   private  int layout;
+   private ArrayList<Food> foodsList;
+
+   public FoodListAdapter(Context context, int layout, ArrayList<Food> foodsList) {
+      this.context = context;
+      this.layout = layout;
+      this.foodsList = foodsList;}
+
+   @Override
+   public int getCount() {
+      return foodsList.size();}@Override
+   public Object getItem(int position) {
+      return foodsList.get(position);}
+
+   @Override
+   public long getItemId(int position) {
+      return position;}private class ViewHolder{
       ImageView imageView;
       TextView txtName, txtPrice;
    }
+
+
 }
